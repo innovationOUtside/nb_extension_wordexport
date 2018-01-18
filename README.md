@@ -3,7 +3,11 @@ Jupyter notebook extension for exporting notebook as MS Word doc
 
 Install:
 
-`pip install --update --no-deps git+https://github.com/innovationOUtside/nb_extension_wordexport.git`
+`pip install git+https://github.com/innovationOUtside/nb_extension_wordexport.git`
+
+To upgrade a current installation to the latest repo version without updating dependencies:
+
+`pip install --upgrade --no-deps git+https://github.com/innovationOUtside/nb_extension_wordexport.git`
 
 ## Wordexport
 
