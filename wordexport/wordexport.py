@@ -56,10 +56,11 @@ def bundle(handler, model):
 	#os.system(cmd)
 	subprocess.check_call(cmd, shell=True, cwd=notebook_dir)
 		
-	handler.set_header('Content-Disposition', 'attachment; filename="%s"' % (notebook_name + '.docx'))
+	handler.set_header('Content-Disposition', 'attachment; filename="{}.docx"'.format(notebook_name))
 	
 	handler.set_header('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
 	
+	#Handle filename containing space
 	staged=os.path.join(notebook_dir, notebook_name)
 	with open("{staged}.docx".format(staged=staged), 'rb') as bundle_file:
 		handler.write(bundle_file.read())
