@@ -40,8 +40,9 @@ def bundle(handler, model):
 	
 	tmp_dir = tempfile.mkdtemp()
 	
-	# Generate HTML version of file with embedded images
-	cmd='jupyter nbconvert --to html_embed "{abs_nb_path}" --output-dir "{tmp_dir}"'.format(abs_nb_path=abs_nb_path,tmp_dir=tmp_dir)
+	# Generate HTML version of file with embedded images using --to html_embed 
+	#  causes pandoc error 
+	cmd='jupyter nbconvert --to html "{abs_nb_path}" --output-dir "{tmp_dir}"'.format(abs_nb_path=abs_nb_path,tmp_dir=tmp_dir)
 	#os.system(cmd)
 	subprocess.check_call(cmd, shell=True)
 	
