@@ -37,25 +37,30 @@ def bundle(handler, model):
 		
 	notebook_basename = os.path.basename(abs_nb_path)
 	notebook_name = os.path.splitext(notebook_basename)[0]
+	notebook_dir = os.path.dirname(abs_nb_path)
 	
-	tmp_dir = tempfile.mkdtemp()
+	#tmp_dir = tempfile.mkdtemp()
 	
 	# Generate HTML version of file with embedded images using --to html_embed 
 	#  causes pandoc error 
-	cmd='jupyter nbconvert --to html "{abs_nb_path}" --output-dir "{tmp_dir}"'.format(abs_nb_path=abs_nb_path,tmp_dir=tmp_dir)
+	#cmd='jupyter nbconvert --to html "{abs_nb_path}" --output-dir "{tmp_dir}"'.format(abs_nb_path=abs_nb_path,tmp_dir=tmp_dir)
+	cmd='jupyter nbconvert --to html "{abs_nb_path}" --output-dir {notebook_dir}'.format(abs_nb_path=abs_nb_path,notebook_dir=notebook_dir )
 	#os.system(cmd)
 	subprocess.check_call(cmd, shell=True)
 	
-	staged=os.path.join(tmp_dir, notebook_name)
+	#staged=os.path.join(tmp_dir, notebook_name)
+	
 	# Convert to MS Word .docx
-	cmd='pandoc -s "{staged}.html" -o "{staged}.docx"'.format(staged=staged)
+	#cmd='pandoc -s "{staged}.html" -o "{staged}.docx"'.format(staged=staged)
+	cmd='pandoc -s "{notebook_name}.html" -o "{notebook_name}.docx"'.format(notebook_name=notebook_name)
 	#os.system(cmd)
-	subprocess.check_call(cmd, shell=True)
+	subprocess.check_call(cmd, shell=True, cwd=notebook_dir)
 		
 	handler.set_header('Content-Disposition', 'attachment; filename="%s"' % (notebook_name + '.docx'))
 	
 	handler.set_header('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
 	
+	staged=os.path.join(notebook_dir, notebook_name)
 	with open("{staged}.docx".format(staged=staged), 'rb') as bundle_file:
 		handler.write(bundle_file.read())
 
@@ -65,9 +70,3 @@ def bundle(handler, model):
 	# We read and send synchronously, so we can clean up safely after finish
 	shutil.rmtree(tmp_dir, True)
 		
-        
-        
-        
-        
-        
-        
