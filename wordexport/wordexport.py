@@ -44,7 +44,7 @@ def bundle(handler, model):
 	# Generate HTML version of file with embedded images using --to html_embed 
 	#  causes pandoc error 
 	#cmd='jupyter nbconvert --to html "{abs_nb_path}" --output-dir "{tmp_dir}"'.format(abs_nb_path=abs_nb_path,tmp_dir=tmp_dir)
-	cmd='jupyter nbconvert --to html "{abs_nb_path}" --output-dir {notebook_dir}'.format(abs_nb_path=abs_nb_path,notebook_dir=notebook_dir )
+	cmd='jupyter nbconvert --to html "{abs_nb_path}" --output-dir "{notebook_dir}"'.format(abs_nb_path=abs_nb_path,notebook_dir=notebook_dir )
 	#os.system(cmd)
 	subprocess.check_call(cmd, shell=True)
 	
