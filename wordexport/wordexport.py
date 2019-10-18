@@ -37,6 +37,7 @@ def bundle(handler, model):
 		
 	#notebook_basename = os.path.basename(abs_nb_path)
 	#notebook_name = os.path.splitext(notebook_basename)[0]
+	notebook_name = os.path.splitext(os.path.basename(abs_nb_path))[0]
 	notebook_dir = os.path.dirname(abs_nb_path)
 	notebook_pathname = os.path.splitext(abs_nb_path)[0]
 	
@@ -72,7 +73,7 @@ def bundle(handler, model):
 	handler.finish()
 
 	#Should we also delete the docx?
-	
+
 
 	# We read and send synchronously, so we can clean up safely after finish
 	#shutil.rmtree(tmp_dir, True)
