@@ -1,6 +1,23 @@
 # nb_extension_wordexport
 Jupyter notebook extension for exporting notebook as MS Word doc
 
+
+---
+
+Recent versions of `pandoc` now include native support for `.ipynb`, which means we can have a direct export of .`ipynb` to `.docx` via pandoc.
+
+
+Install upgraded pandoc:
+
+```
+wget https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-linux.tar.gz
+sudo tar xvzf pandoc-2.7.3-linux.tar.gz --strip-components 1 -C /usr/local
+```
+
+
+
+---
+
 Install:
 
 `pip install git+https://github.com/innovationOUtside/nb_extension_wordexport.git`
