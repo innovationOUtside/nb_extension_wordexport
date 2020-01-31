@@ -17,6 +17,8 @@ Enable extension:
 
 `jupyter bundlerextension enable --py wordexport.wordexport  --sys-prefix`
 
+(If that doesn't work, try with `--user` rather than `--sys-prefix`.)
+
 In TM351 VM, restart server if required:
 
 `systemctl restart jupyter.service`
