@@ -36,3 +36,14 @@ Edit the styles in `my_template.docx`.
 
 `pandoc -s myfile.html --template=my_template -o test64.docx`
 
+
+### Alternatives
+
+This extension is quite old now... Others worth trying:
+
+- [jupyter-docx-bundler](https://github.com/m-rossi/jupyter-docx-bundler)
+
+
+See also:
+
+- [nb2xls](https://github.com/ideonate/nb2xls): *convert Jupyter notebook to Excel spreadsheet*
